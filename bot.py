@@ -1,4 +1,4 @@
-import os
+п»їimport os
 import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
@@ -17,10 +17,10 @@ saved_photo_id = None
 @dp.message(Command("setphoto"))
 async def set_photo_cmd(message: types.Message):
     if message.chat.type != ChatType.PRIVATE:
-        await message.reply("Эту команду можно использовать только в личке.")
+        await message.reply("Р­С‚Сѓ РєРѕРјР°РЅРґСѓ РјРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ РІ Р»РёС‡РєРµ.")
         return
     waiting_for_photo.add(message.from_user.id)
-    await message.reply("Отправь мне фото, которое я буду использовать.")
+    await message.reply("РћС‚РїСЂР°РІСЊ РјРЅРµ С„РѕС‚Рѕ, РєРѕС‚РѕСЂРѕРµ СЏ Р±СѓРґСѓ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ.")
 
 
 @dp.message()
@@ -30,7 +30,7 @@ async def on_message(message: types.Message):
     if message.from_user.id in waiting_for_photo and message.photo:
         saved_photo_id = message.photo[-1].file_id
         waiting_for_photo.remove(message.from_user.id)
-        await message.reply("Фото сохранено.")
+        await message.reply("Р¤РѕС‚Рѕ СЃРѕС…СЂР°РЅРµРЅРѕ.")
         return
 
     if message.entities:
